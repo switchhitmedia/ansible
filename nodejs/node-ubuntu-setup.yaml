@@ -1,0 +1,31 @@
+---
+- hosts:
+  vars:
+  remote_user: root
+  tasks:
+  
+  - name: Update System
+    apt:
+      update_cache: yes
+
+  - name: Upgrade Cache
+    apt:
+      upgrade: dist
+
+  - name: Install Curl
+    apt:
+      name: curl
+      state: latest
+
+  - name: Curl Install Nodesource Binary
+    shell: curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+
+  - name: Install Nodejs
+    apt:
+      name: nodejs
+      state: latest
+
+  - name: Install Build-Essentials
+    apt:
+      name: build-essential
+      state: latest
