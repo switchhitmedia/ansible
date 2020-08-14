@@ -5,9 +5,7 @@ This repository will hold ansible playbooks for future use
 These are the playbooks that are in effect/planned/development. For further instructions or adjustments look at the playbook you wish to use for more information and details.
 
 ### Planned
-- MySQL Setup
 - PostgreSQL Setup
-- React Setup
 - API (ExpressJS) Setup
 - Wordpress Setup
 - Ubuntu System Update
@@ -21,5 +19,7 @@ These are the playbooks that are in effect/planned/development. For further inst
 
 ### In-Progress
 - NodeJS Setup
+- MySQL Setup
+- React Setup
 
 ### Completed

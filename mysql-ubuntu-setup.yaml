@@ -1,0 +1,37 @@
+---
+- hosts:
+  vars:
+  vars_prompt:
+    - name: mysql_root_user
+      prompt: "What will be your mysql root username?"
+      private: no
+      
+    - name: mysql_root_pass
+      prompt: "What will be your mysql root password?"
+
+  remote_user: root
+  tasks:
+  - name: Update System
+    apt:
+      name: "*"
+      state: latest
+
+  - name: Upgrade System
+    apt:
+      upgrade_cache: dist
+
+  - name: Run Secure Installation for MySQL
+    shell: |
+      sudo mysql_secure_installation
+
+      expect "Press y|Y for Yes, any other key for No:"
+      send "Y\n"
+
+      expect "Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG:"
+      send "0\n"
+
+      expect "New Password:"
+      send "{{ mysql_root_pass }}"
+
+      expect "Re-enter new password:"
+      send "{{ mysql_root_pass }}"
