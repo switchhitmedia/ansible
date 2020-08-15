@@ -1,0 +1,24 @@
+---
+- hosts:
+  vars:
+  vars_prompt:
+    - name: project_name
+      prompt: "What is the name of the project?"
+      private: no
+
+  remote_user: root
+  tasks:
+
+  - name: Update System
+    apt:
+      name: "*"
+      state: latest
+
+  - name: Upgrade System
+    apt:
+      upgrade_cache: dist
+
+  - name: Create React App through npm
+    shell: |
+
+    npm create-react-app {{ project_name }}
