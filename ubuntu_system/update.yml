@@ -1,0 +1,22 @@
+---
+- hosts: [docker-pi]
+
+  become_method: sudo
+  become: yes
+  tasks:
+  - name: System Reboot
+    reboot:
+      reboot_timeout: 300
+  
+  - name: Update System
+    apt:
+      name: "*"
+      state: latest
+
+  - name: Upgrade System
+    apt:
+      update_cache:
+
+  - name: Autoremove Old Package Data
+    apt:
+      autoremove:
